@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText passwordEditText;
     TextView signInTextView;
     Button registerButton;
+    ProgressBar loginProgressBar;
     private static String TAG = "MuContact";
 
     @Override
@@ -40,9 +42,12 @@ public class RegisterActivity extends AppCompatActivity {
         emailEditText = (EditText) findViewById(R.id.emailTextInputEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordInputEditText);
         signInTextView = (TextView) findViewById(R.id.signInTextView);
+        loginProgressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
+        loginProgressBar.setVisibility(View.GONE);
         signInTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loginProgressBar.setVisibility(View.VISIBLE);
                 v.getContext()
                         .startActivity(new Intent(v.getContext(),
                                 LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
@@ -71,11 +76,13 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Toast.makeText(getApplicationContext(), "User saved", Toast.LENGTH_SHORT).show();
-
+                        loginProgressBar.setVisibility(View.INVISIBLE);
+                        finish();
                     }
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), "Failed to save user", Toast.LENGTH_SHORT).show();
+                        loginProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }

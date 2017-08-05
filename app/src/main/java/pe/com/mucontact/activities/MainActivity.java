@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.action_rewards:
-                Intent intent1 = new Intent(getApplicationContext(), RewardsActivity.class);
-                startActivity(intent1);
+                Intent intent2 = new Intent (getApplicationContext(), RewardActivity.class);
+                startActivity(intent2);
                 return true;
             default:
                 return super.onContextItemSelected(item);

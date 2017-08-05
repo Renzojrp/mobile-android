@@ -1,7 +1,5 @@
 package pe.com.mucontact.network;
 
-import java.net.MulticastSocket;
-
 import pe.com.mucontact.models.Craftman;
 import pe.com.mucontact.models.Musician;
 import pe.com.mucontact.models.Publication;
@@ -23,6 +21,7 @@ public class NewApiService {
     public static String PUBLICATION_USER_URL = "https://mucontact.herokuapp.com/api/publication/user/{user_id}";
     public static String CRAFTMAN_URL = "https://mucontact.herokuapp.com/api/craftman";
     public static String USERS_EDIT_URL = "https://mucontact.herokuapp.com/api/user/{user_id}";
+    public static String CONTRACT_USER_URL = "https://mucontact.herokuapp.com/api/contract/user/{user_id}";
     public static String CONTRACT_URL = "https://mucontact.herokuapp.com/api/contract";
     private Reward currentReward;
     private Craftman currentCraftman;
